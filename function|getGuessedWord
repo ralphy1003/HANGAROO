@@ -1,0 +1,34 @@
+print("NOTE:")
+print("1.)Use only CAPITAL letters")
+print("2.)Goodluck and Have Fun!")
+ALPH= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+secretWord=input("Please Input the word to be guessed:")
+l=len(secretWord)
+print("HINT:WORD CONSIST OF ",l, "LETTERS")
+lettersGuessed=[];
+GW=[];
+def fnct_uno():
+     for letter in secretWord:
+         GW.append("_")
+         print ("  ".join(GW))
+def getGuessedWord():
+    tries=1
+    while tries<5:
+        TRY=input("PLEASE ENTER A LETTER:")
+        if TRY  not in ALPH:
+            print("ERROR!PLEASE ENTER A LETTER!")
+        elif TRY  in lettersGuessed:
+            print("YOU HAVE REPEATED YOUR SELECTION!PLEASE ENTER A NEW LETTER!")
+        else:
+            lettersGuessed.append(tries)
+            if TRY in secretWord:
+                print("THAT'S CORRECT! CONTINUE TO THE NEXT LETTER!")
+                for x in range(0,l):
+                    if secretWord[x] == TRY:
+                        GW[x] = TRY
+                        print(' '.join(GW))
+        if '_' not in GW:
+                        print("YOU'VE COMPLETED THE MISSION!")
+                        break
+fnct_uno()
+getGuessedWord()
