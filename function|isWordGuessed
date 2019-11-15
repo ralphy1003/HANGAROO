@@ -1,0 +1,14 @@
+print("NOTE:")
+print("1.)This is used to check if")
+print("a certain letter is in the secret word")
+print("2.)Type only a single letter for checking")
+print("3.) Use only CAPITAL letters")
+secretWord = str(input("Enter Secret Word: "))
+lettersGuessed = input("Guess a Letter: ")
+def isWordGuessed (secretWord, lettersGuessed):
+        for letter in secretWord:
+            a = letter in lettersGuessed
+            if letter == ("False"):
+                break
+            return a
+print (isWordGuessed(secretWord, lettersGuessed))
