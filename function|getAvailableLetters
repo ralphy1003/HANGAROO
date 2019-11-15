@@ -1,0 +1,13 @@
+print("NOTE:") 
+print("1.)DO NOT USE CAPITAL LETTERS")
+print("2.)Use commas between letters during input")
+alph= ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+lettersGuessed = list(input("Please enter a set of letters: "))
+
+def getAvailableLetters(lettersGuessed):
+    AvailableLetters = []
+    for letters in alph:
+        AvailableLetters = ["" if letters in lettersGuessed else letters for letters in alph]
+    print (''.join(AvailableLetters))
+    return letters
+getAvailableLetters(lettersGuessed)
