@@ -1,0 +1,61 @@
+print("WELCOME TO TEXT DROP!(Hangaroo Prototype v.01)")
+print("Directions:")
+print("You're here to solve and guess a given word by entering a letter.")
+print("If the letter that you've inputted is correct, it will fill up the blanks;otherwise,if wrong, one life will be reducted from the")
+print("total lives of 3")
+print("You are only allowed to have 3 mistakes! GOODLUCK!")
+print("NOTE: USE ONLY CAPITAL LETTERS & DO NOT ENTER A LETTER THAT WAS ALREADY INPUTED")
+lettersGuessed =[]
+GW =[]
+import random
+ALPH= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+MysteryWords = ['MADILAW','HANDSOME','RALPH', 'PHYTON', 'CUTE','SPYDER', 'CZECHOSLOVAKIA', 'ALPHA', 'BRAVO','EMPIRE','WHILOM','FLABBERGASTED','EXASPERATED','DISCOMBOBULATED']
+ShouldBeGuessed= random.choice(MysteryWords)
+l = len(ShouldBeGuessed)
+
+def function_uno():
+    for letter in ShouldBeGuessed:
+        GW.append("_")
+        
+    print ("HINT:WORD CONSIST OF ", l, "LETTERS")
+    print (' '.join(GW))
+        
+def function_dos():
+    tries = 0
+    while tries < 3:
+        print ("\n", ' '.join(ALPH))
+        TRY = input("Letter: \n").upper()
+        
+        if TRY in lettersGuessed:
+            print("You used the letter again or your input is not in CAPITAL LETTER!")
+            print("You're not following instructions! One life is deducted!")
+            tries +=1
+            print("LOST LIVES: ", tries)
+        elif TRY not in ALPH:
+           print ("Incorrect letter value!Try again!")
+           tries +=1
+           print("LOST LIVES: ", tries)
+        else:
+            lettersGuessed.append(TRY)
+            if TRY in ShouldBeGuessed:
+                print ("NICE JOB!")
+                for x in range(0, l):
+                    if ShouldBeGuessed[x] == TRY:
+                        GW[x] = TRY
+                        print(' '.join(GW))
+                ALPH.remove(TRY)
+            else:
+                print("TRY AGAIN!")
+                ALPH.remove(TRY)
+                tries += 1
+                print("LOST LIVES: ", tries)
+                if tries == 3:
+                    print("YOU'VE LOST!")
+                    print("ANSWER:", ShouldBeGuessed)
+                    print("STRIVE HARDER!")
+                    break
+        if '_' not in GW:
+                        print("YOU GUESSED IT RIGHT!")
+                        break              
+function_uno()
+function_dos()
